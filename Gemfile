@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
+# For plain Ruby scripts
+group :development do
+  gem 'rubocop-fjord', require: false
+end
+
+gem 'json'
+gem 'puma', '~> 6.6'
+gem 'rackup', '~> 2.2'
 gem 'sinatra'
 gem 'sinatra-contrib'
-gem 'json'
-
-gem "rackup", "~> 2.2"
-gem "puma", "~> 6.6"

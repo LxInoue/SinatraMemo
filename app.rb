@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sinatra'
 require 'sinatra/reloader'
 require 'json'
@@ -12,6 +14,7 @@ MEMO_FILE = 'memos.json'
 
 def load_memos
   return [] unless File.exist?(MEMO_FILE)
+
   JSON.parse(File.read(MEMO_FILE), symbolize_names: true)
 end
 
