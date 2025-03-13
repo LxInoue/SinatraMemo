@@ -17,6 +17,10 @@ def load_memos
   JSON.parse(File.read('memos.json'), symbolize_names: true)
 end
 
+get '/' do
+  redirect '/memos'
+end
+
 get '/memos' do
   @memos = load_memos
   erb :index
