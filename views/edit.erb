@@ -6,14 +6,20 @@
 </head>
 <body>
   <h1>メモの編集</h1>
+  
+  <% if @error %>
+    <p style="color: red;"><%= h(@error) %></p>
+  <% end %>
+
   <form action="/memos/<%= @memo[:id] %>" method="POST">
     <input type="hidden" name="_method" value="PATCH">
     
     <p>タイトル</p>
-    <input type="text" value="<%= h(@memo[:title]) %>" size="31">
-    
+    <input type="text" name="title" value="<%= h(@memo[:title]) %>" size="31">
+
     <p>内容</p>
-    <textarea rows="5" cols="30"><%= h(@memo[:content]) %></textarea>
+    <textarea name="content" rows="5" cols="30"><%= h(@memo[:content]) %></textarea>
+
     <br>
     <button type="submit">更新</button>
   </form>

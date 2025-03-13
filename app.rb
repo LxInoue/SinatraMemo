@@ -8,9 +8,15 @@ helpers do
   end
 end
 
+MEMO_FILE = 'memos.json'
+
 def load_memos
-  return [] unless File.exist?('memos.json')
-  JSON.parse(File.read('memos.json'), symbolize_names: true)
+  return [] unless File.exist?(MEMO_FILE)
+  JSON.parse(File.read(MEMO_FILE), symbolize_names: true)
+end
+
+def save_memos(memos)
+  File.write(MEMO_FILE, JSON.pretty_generate(memos))
 end
 
 get '/' do
@@ -26,6 +32,22 @@ get '/memos/new' do
   erb :new
 end
 
+post '/memos' do
+  title = params[:title].strip
+  content = params[:content].strip
+
+  if title.empty?
+    @error = 'タイトルを入力してください'
+    erb :new
+  else
+    memos = load_memos
+    new_memo = { id: SecureRandom.uuid, title: title, content: content }
+    memos << new_memo
+    save_memos(memos)
+    redirect '/memos'
+  end
+end
+
 get '/memos/:id' do
   memos = load_memos
   @memo = memos.find { |m| m[:id] == params[:id] }
@@ -38,4 +60,34 @@ get '/memos/:id/edit' do
   @memo = memos.find { |m| m[:id] == params[:id] }
   halt 404, 'メモが見つかりません' unless @memo
   erb :edit
+end
+
+patch '/memos/:id' do
+  memos = load_memos
+  memo = memos.find { |m| m[:id] == params[:id] }
+  halt 404, 'メモが見つかりません' unless memo
+
+  title = params[:title].strip
+  content = params[:content].strip
+
+  if title.empty?
+    @error = 'タイトルを入力してください'
+    @memo = memo
+    erb :edit
+  else
+    memo[:title] = title
+    memo[:content] = content
+    save_memos(memos)
+    redirect "/memos/#{params[:id]}"
+  end
+end
+
+delete '/memos/:id' do
+  memos = load_memos
+  memo = memos.find { |m| m[:id] == params[:id] }
+  halt 404, 'メモが見つかりません' unless memo
+
+  memos.delete(memo)
+  save_memos(memos)
+  redirect '/memos'
 end

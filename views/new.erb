@@ -6,6 +6,10 @@
 </head>
 <body>
   <h1>メモの新規作成</h1>
+  <% if @error %>
+    <p style="color: red;"><%= h(@error) %></p>
+  <% end %>
+  
   <form action="/memos" method="POST">
     <table>
       <tr>
