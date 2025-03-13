@@ -29,3 +29,10 @@ end
 get '/memos/new' do
   erb :new
 end
+
+get '/memos/:id' do
+  memos = load_memos
+  @memo = memos.find { |m| m[:id] == params[:id] }
+  halt 404, 'メモが見つかりません' unless @memo
+  erb :show
+end
