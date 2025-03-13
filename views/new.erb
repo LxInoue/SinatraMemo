@@ -7,14 +7,30 @@
 <body>
   <h1><%= @app_name %></h1>
   <form action="/memos" method="POST">
-    <div>
-      <label>タイトル: <input type="text" name="title"></label>
-    </div>
-    <div>
-      <label>内容: <textarea name="content"></textarea></label>
-    </div>
-    <button type="submit">保存</button>
+    <table>
+      <tr>
+        <td>タイトル</td>
+      </tr>
+      <tr>
+        <td>
+          <input type="text" name="title" size="31">
+        </td>
+      </tr>
+      <tr>
+        <td>内容</td>
+      </tr>
+      <tr>
+        <td>
+          <textarea name="content" rows="5" cols="30"></textarea>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          <button type="submit">保存</button>
+        </td>
+      </tr>
+    </table>
   </form>
-  <a href="/memos">戻る</a>
 </body>
 </html>
