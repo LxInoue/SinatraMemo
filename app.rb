@@ -8,10 +8,6 @@ helpers do
   end
 end
 
-before do
-  @app_name = 'メモアプリ'
-end
-
 def load_memos
   return [] unless File.exist?('memos.json')
   JSON.parse(File.read('memos.json'), symbolize_names: true)

@@ -2,10 +2,10 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>メモ編集</title>
+  <title><%= h @memo[:title] %>の編集</title>
 </head>
 <body>
-  <h1>メモ編集</h1>
+  <h1>メモの編集</h1>
   <form action="/memos/<%= @memo[:id] %>" method="POST">
     <input type="hidden" name="_method" value="PATCH">
     
