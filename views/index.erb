@@ -5,7 +5,9 @@
   <title>メモ一覧</title>
 </head>
 <body>
-  <a href="/memos/new">追加</a>
+  <form action="/memos/new" method="get">
+    <button type="submit">追加</button>
+  </form>
   <h1><%= @app_name %></h1>
   <ul>
     <% @memos.each do |memo| %>
