@@ -5,10 +5,19 @@
   <title>メモ一覧</title>
 </head>
 <body>
-  <form action="/memos/new" method="get">
-    <button type="submit">追加</button>
-  </form>
-  <h1><%= @app_name %></h1>
+    <table>
+    <tr>
+      <td>
+        <h1><%= @app_name %></h1>
+      </td>
+      <td width="10"></td>
+      <td>
+        <form action="/memos/new" method="get">
+          <button type="submit">追加</button>
+        </form>
+      </td>
+    </tr>
+  </table>
   <ul>
     <% @memos.each do |memo| %>
       <li><a href="/memos/<%= memo[:id] %>"><%= h memo[:title] %></a></li>
