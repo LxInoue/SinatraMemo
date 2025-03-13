@@ -36,3 +36,10 @@ get '/memos/:id' do
   halt 404, 'メモが見つかりません' unless @memo
   erb :show
 end
+
+get '/memos/:id/edit' do
+  memos = load_memos
+  @memo = memos.find { |m| m[:id] == params[:id] }
+  halt 404, 'メモが見つかりません' unless @memo
+  erb :edit
+end
