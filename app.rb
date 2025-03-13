@@ -25,3 +25,7 @@ get '/memos' do
   @memos = load_memos
   erb :index
 end
+
+get '/memos/new' do
+  erb :new
+end
