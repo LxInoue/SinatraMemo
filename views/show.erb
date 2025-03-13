@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title><%= h @memo[:title] %>の詳細</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
 
   <p>内容</p>
   <textarea readonly onfocus="this.blur()" rows="5" cols="30"><%= h(@memo[:content]) %></textarea>
-  
+
   <br>
 
   <form action="/memos/<%= @memo[:id] %>/edit" method="GET" style="display:inline;">

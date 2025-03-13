@@ -7,6 +7,8 @@ group :development do
   gem 'rubocop-fjord', require: false
 end
 
+gem 'erb_lint', require: false
+
 gem 'json'
 gem 'puma', '~> 6.6'
 gem 'rackup', '~> 2.2'
