@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>メモ一覧</title>
+</head>
+<body>
+    <table>
+    <tr>
+      <td>
+        <h1>メモ一覧</h1>
+      </td>
+      <td width="10"></td>
+      <td>
+        <form action="/memos/new" method="get">
+          <button type="submit">新規作成</button>
+        </form>
+      </td>
+    </tr>
+  </table>
+  <ul>
+    <% @memos.each do |memo| %>
+      <li><a href="/memos/<%= memo[:id] %>"><%= h memo[:title] %></a></li>
+    <% end %>
+  </ul>
+</body>
+</html>

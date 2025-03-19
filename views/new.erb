@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>新規作成</title>
+</head>
+<body>
+  <h1>メモの新規作成</h1>
+  <% if @error %>
+    <p style="color: red;"><%= h(@error) %></p>
+  <% end %>
+
+  <form action="/memos" method="POST">
+    <table>
+      <tr>
+        <td>タイトル</td>
+      </tr>
+      <tr>
+        <td>
+          <input type="text" name="title" size="31">
+        </td>
+      </tr>
+      <tr>
+        <td>内容</td>
+      </tr>
+      <tr>
+        <td>
+          <textarea name="content" rows="5" cols="30"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <button type="submit">保存</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <br>
+  <a href="/memos">一覧に戻る</a>
+</body>
+</html>
