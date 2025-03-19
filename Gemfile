@@ -5,9 +5,8 @@ source 'https://rubygems.org'
 # For plain Ruby scripts
 group :development do
   gem 'rubocop-fjord', require: false
+  gem 'erb_lint', require: false
 end
-
-gem 'erb_lint', require: false
 
 gem 'json'
 gem 'puma', '~> 6.6'
